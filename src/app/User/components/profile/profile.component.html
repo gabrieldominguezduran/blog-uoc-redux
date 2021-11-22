@@ -64,7 +64,17 @@
       <section class="input-section">
         <mat-form-field class="full-width" appearance="fill">
           <mat-label>Birth date: </mat-label>
-          <input matInput type="date" [formControl]="birth_date" required />
+          <input
+            matInput
+            [formControl]="birth_date"
+            [matDatepicker]="picker"
+            required
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="birth_date.hasError('required')">
             Birth date is <strong>required</strong>
           </mat-error>

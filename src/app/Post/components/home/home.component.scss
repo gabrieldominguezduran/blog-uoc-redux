@@ -14,30 +14,16 @@ mat-card {
   }
 }
 
-.title {
-  text-align: center;
-}
-
-.content {
-  padding: 0 2rem;
-}
-
-.badge-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 1rem;
-}
 .badge {
-  width: 15%;
+  width: fit-content;
+  height: fit-content;
   color: black;
-  margin-right: 5px;
-  margin-left: 5px;
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 0 10px;
+  margin-right: 0.1rem;
   text-align: center;
 }
 
 .btn {
-  margin: 0 1rem;
+  margin: 0 0.5rem;
 }

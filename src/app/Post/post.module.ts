@@ -12,8 +12,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
+import { CdkColumnDef } from '@angular/cdk/table';
 
 @NgModule({
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, CdkColumnDef],
   declarations: [
     PostsListComponent,
     PostFormComponent,
@@ -29,6 +34,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatSelectModule,
     MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule,
   ],
 })
 export class PostModule {}

@@ -41,10 +41,15 @@
           <mat-label>Publication date: </mat-label>
           <input
             matInput
-            type="date"
             [formControl]="publication_date"
+            [matDatepicker]="picker"
             required
           />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="description.hasError('required')">
             Publication date is <strong>required</strong>
           </mat-error>

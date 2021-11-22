@@ -8,8 +8,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { CdkColumnDef } from '@angular/cdk/table';
 
 @NgModule({
+  providers: [CdkColumnDef],
   declarations: [CategoriesListComponent, CategoryFormComponent],
   imports: [
     CommonModule,
@@ -18,6 +22,8 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatIconModule,
+    MatTableModule,
   ],
 })
 export class CategoryModule {}
