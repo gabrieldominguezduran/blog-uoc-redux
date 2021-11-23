@@ -6,11 +6,28 @@ import { SharedService } from 'src/app/Shared/Services/shared.service';
 import * as PostsAction from '../../actions';
 import { PostDTO } from '../../models/post.dto';
 import { PostService } from '../../services/post.service';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('slideInOut', [
+      transition(':enter', [
+        style({
+          transform: 'translateY(100vh)',
+        }),
+        animate('1500ms ease-out'),
+      ]),
+    ]),
+  ],
 })
 export class HomeComponent {
   posts: PostDTO[];

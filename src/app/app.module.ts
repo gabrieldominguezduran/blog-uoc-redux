@@ -10,10 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { appReducers, EffectsArray } from './app.reducers';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 
 import { AuthModule } from './Auth/auth.module';
 import { CategoryModule } from './Category/category.module';
@@ -22,6 +18,11 @@ import { FooterComponent } from './Shared/Components/footer/footer.component';
 import { HeaderComponent } from './Shared/Components/header/header.component';
 import { AuthInterceptorService } from './Shared/Services/auth-interceptor.service';
 import { UserModule } from './User/user.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -47,10 +48,11 @@ import { UserModule } from './User/user.module';
       logOnly: environment.production,
     }),
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
+    MatToolbarModule,
     MatButtonModule,
-    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    FlexLayoutModule,
   ],
   providers: [
     {

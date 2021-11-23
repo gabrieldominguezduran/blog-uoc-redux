@@ -1,17 +1,48 @@
-<p>header works!</p>
+<mat-toolbar class="header" color="primary">
+  <h1>Uoc Blog</h1>
+  <span class="spacer"></span>
+  <div class="desktop">
+    <!-- NO AUTH REQUIRED -->
+    <div *ngIf="showNoAuthSection">
+      <button mat-button (click)="home()">Home</button>
+      <button mat-button (click)="login()">Login</button>
+      <button mat-button (click)="register()">Register</button>
+    </div>
 
-<!-- NO AUTH REQUIRED -->
-<div *ngIf="showNoAuthSection">
-  <button (click)="home()">Home</button>
-  <button (click)="login()">Login</button>
-  <button (click)="register()">Register</button>
-</div>
+    <!-- AUTH REQUIRED -->
+    <div *ngIf="showAuthSection">
+      <button mat-button (click)="home()">Home</button>
+      <button mat-button (click)="adminPosts()">Admin posts</button>
+      <button mat-button (click)="adminCategories()">Admin categories</button>
+      <button mat-button (click)="profile()">Profile</button>
+      <button mat-button (click)="logout()">Logout</button>
+    </div>
+  </div>
 
-<!-- AUTH REQUIRED -->
-<div *ngIf="showAuthSection">
-  <button (click)="home()">Home</button>
-  <button (click)="adminPosts()">Admin posts</button>
-  <button (click)="adminCategories()">Admin categories</button>
-  <button (click)="profile()">Profile</button>
-  <button (click)="logout()">Logout</button>
-</div>
+  <div class="mobile">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <!-- NO AUTH REQUIRED -->
+      <div *ngIf="showNoAuthSection">
+        <button mat-button (click)="home()">Home</button>
+        <button mat-button (click)="login()">Login</button>
+        <button mat-button (click)="register()">Register</button>
+      </div>
+
+      <!-- AUTH REQUIRED -->
+      <div *ngIf="showAuthSection">
+        <button mat-button (click)="home()">Home</button>
+        <button mat-button (click)="adminPosts()">Admin posts</button>
+        <button mat-button (click)="adminCategories()">Admin categories</button>
+        <button mat-button (click)="profile()">Profile</button>
+        <button mat-button (click)="logout()">Logout</button>
+      </div>
+    </mat-menu>
+  </div>
+</mat-toolbar>
