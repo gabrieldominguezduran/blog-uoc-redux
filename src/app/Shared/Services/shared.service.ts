@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
 
 export interface ResponseError {
   statusCode: number;
@@ -16,7 +16,18 @@ export interface ResponseError {
   providedIn: 'root',
 })
 export class SharedService {
-  constructor() {}
+  isLoading: BehaviorSubject<boolean>;
+  constructor() {
+    this.isLoading = new BehaviorSubject<boolean>(false);
+  }
+
+  show(): void {
+    this.isLoading.next(true);
+  }
+
+  hide() {
+    this.isLoading.next(false);
+  }
 
   async managementToast(
     element: string,

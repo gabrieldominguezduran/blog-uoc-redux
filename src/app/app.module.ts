@@ -23,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -53,6 +54,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatMenuModule,
     MatIconModule,
     FlexLayoutModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {

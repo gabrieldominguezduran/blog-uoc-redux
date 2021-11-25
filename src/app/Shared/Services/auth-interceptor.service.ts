@@ -6,8 +6,10 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 import { AppState } from '../../app.reducers';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +17,10 @@ import { AppState } from '../../app.reducers';
 export class AuthInterceptorService implements HttpInterceptor {
   private access_token: string = '';
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+    private store: Store<AppState>,
+    private spinnerService: SharedService
+  ) {
     this.store.select('auth').subscribe((auth) => {
       this.access_token = '';
       if (auth.credentials.access_token) {
@@ -28,6 +33,9 @@ export class AuthInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    console.log('START API CALL');
+    this.spinnerService.show();
+
     if (this.access_token) {
       req = req.clone({
         setHeaders: {
@@ -38,6 +46,11 @@ export class AuthInterceptorService implements HttpInterceptor {
       });
     }
 
-    return next.handle(req);
+    return next.handle(req).pipe(
+      finalize(() => {
+        console.log('FINISH API CALL');
+        this.spinnerService.hide();
+      })
+    );
   }
 }

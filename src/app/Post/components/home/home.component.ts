@@ -19,13 +19,14 @@ import {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations: [
-    trigger('slideInOut', [
-      transition(':enter', [
+    trigger('fadeInOut', [
+      state(
+        'void',
         style({
-          transform: 'translateY(100vh)',
-        }),
-        animate('1500ms ease-out'),
-      ]),
+          opacity: 0.2,
+        })
+      ),
+      transition('void <=> *', animate(1500)),
     ]),
   ],
 })
